@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>machine_arm.png</Source>
+      <Name>machine_arm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\machine_arm.xnb</Output>
+      <Time>2012-04-11T19:37:46.0816-04:00</Time>
+    </Item>
+    <Item>
+      <Source>machine_base.png</Source>
+      <Name>machine_base</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\machine_base.xnb</Output>
+      <Time>2012-04-11T19:37:46.0936-04:00</Time>
+    </Item>
+    <Item>
+      <Source>machine_forearm.png</Source>
+      <Name>machine_forearm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\machine_forearm.xnb</Output>
+      <Time>2012-04-11T19:37:46.1046-04:00</Time>
+    </Item>
+    <Item>
+      <Source>machine_hookBase.png</Source>
+      <Name>machine_hookBase</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\machine_hookBase.xnb</Output>
+      <Time>2012-04-11T19:37:46.1166-04:00</Time>
+    </Item>
+    <Item>
+      <Source>machine_hookLeft.png</Source>
+      <Name>machine_hookLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\machine_hookLeft.xnb</Output>
+      <Time>2012-04-11T19:37:46.1236-04:00</Time>
+    </Item>
+    <Item>
+      <Source>machine_hookRight.png</Source>
+      <Name>machine_hookRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\machine_hookRight.xnb</Output>
+      <Time>2012-04-11T19:37:46.1326-04:00</Time>
+    </Item>
+    <Item>
+      <Source>gameFont.spritefont</Source>
+      <Name>gameFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\gameFont.xnb</Output>
+      <Time>2012-04-12T19:16:34.866-04:00</Time>
+    </Item>
+    <Item>
+      <Source>machine_forearm2.png</Source>
+      <Name>machine_forearm2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\machine_forearm2.xnb</Output>
+      <Time>2012-04-30T14:14:52.319-04:00</Time>
+    </Item>
+    <Item>
+      <Source>1.png</Source>
+      <Name>1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\1.xnb</Output>
+      <Time>2012-04-30T14:40:44.232-04:00</Time>
+    </Item>
+    <Item>
+      <Source>0.png</Source>
+      <Name>0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\0.xnb</Output>
+      <Time>2012-04-30T14:54:26.552-04:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2010-12-21T16:13:04.8039012-05:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
