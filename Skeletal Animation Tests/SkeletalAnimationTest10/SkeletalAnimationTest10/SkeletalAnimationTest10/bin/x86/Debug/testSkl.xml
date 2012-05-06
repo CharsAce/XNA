@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="SkeletalAnimationTest10.SkelJoint">
+    <joints>
+      <Item>
+        <Offset>0 0</Offset>
+        <TextureOrigin>24 24</TextureOrigin>
+        <TextureName>0</TextureName>
+        <ParentId>-1</ParentId>
+        <Flag>BoneAbsolute</Flag>
+      </Item>
+      <Item>
+        <Offset>0 30</Offset>
+        <TextureOrigin>12 24</TextureOrigin>
+        <TextureName>1</TextureName>
+        <ParentId>0</ParentId>
+        <Flag>Child</Flag>
+      </Item>
+      <Item>
+        <Offset>84 0</Offset>
+        <TextureOrigin>12 24</TextureOrigin>
+        <TextureName>1</TextureName>
+        <ParentId>1</ParentId>
+        <Flag>Child</Flag>
+      </Item>
+    </joints>
+  </Asset>
+</XnaContent>
