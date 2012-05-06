@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
+using System.Xml;
 
 namespace SkeletalAnimationTest10
 {
@@ -19,6 +21,7 @@ namespace SkeletalAnimationTest10
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         FrameRateCounter ff;
+        SpriteFont DebugFont;
         Sk bb;
         //Skeleton2d skel;
         Skeleton2 sk;
@@ -29,6 +32,8 @@ namespace SkeletalAnimationTest10
 
         MouseState currentMouseState;
         MouseState previousMouseState;
+
+        XmlWriterSettings xmlSettings;
 
         Vector2 MousePosition;
 
@@ -64,7 +69,7 @@ namespace SkeletalAnimationTest10
             //skel = new Skeleton2d();
             bb = new Sk();
             LoadAnimation();
-            LoadAn();
+            
             base.Initialize();
             joi.SetSkeletonPosition(new Vector2(300, 300));
             //skel.AddPosition(new Vector2(100,100));
@@ -108,19 +113,19 @@ namespace SkeletalAnimationTest10
 
             Keyframe bk = new Keyframe();
             bk.trans.Position = new Vector2(0, 0);
-            bk.trans.Rotation = MathHelper.PiOver4 / 3;
+            bk.trans.Rotation = MathHelper.PiOver4;
             bk.trans.Scale = new Vector2(1, 1);
             bk.FrameNumber = 0;
 
             Keyframe bk2 = new Keyframe();
             bk2.trans.Position = new Vector2(0, 0);
-            bk2.trans.Rotation = MathHelper.PiOver4;
+            bk2.trans.Rotation = MathHelper.PiOver4/3;
             bk2.trans.Scale = new Vector2(1, 1);
             bk2.FrameNumber = 19;
 
             Keyframe bk3 = new Keyframe();
             bk3.trans.Position = new Vector2(0, 0);
-            bk3.trans.Rotation = MathHelper.PiOver4 / 3;
+            bk3.trans.Rotation = MathHelper.PiOver4;
             bk3.trans.Scale = new Vector2(1, 1);
             bk3.FrameNumber = 39;
 
@@ -147,9 +152,9 @@ namespace SkeletalAnimationTest10
 
             Keyframe ck3 = new Keyframe();
             ck3.trans.Position = new Vector2(0, 0);
-            ck3.trans.Rotation = MathHelper.Pi / 1.5f;
+            ck3.trans.Rotation = MathHelper.PiOver2 / 2f;
             ck3.trans.Scale = new Vector2(1, 1);
-            ck3.FrameNumber = 28;
+            ck3.FrameNumber = 39;
 
             Keyframe ck4 = new Keyframe();
             ck4.trans.Position = new Vector2(0, 0);
@@ -161,70 +166,22 @@ namespace SkeletalAnimationTest10
             cb.Keyframes.Add(ck);
             cb.Keyframes.Add(ck2);
             cb.Keyframes.Add(ck3);
-            cb.Keyframes.Add(ck4);
+            //cb.Keyframes.Add(ck4);
             cb.FrameLength = 40;
-            cb.FPS = 12;
+            cb.FPS = 10;
 
             skeletonAnimation.BoneAnimations.Add(cb);
             animationPlayer = new AnimationPlayer(skeletonAnimation);
         }
 
-        public void LoadAn()
-        {
-            Transformation ak;
-            ak.Position = new Vector2(300, 300);
-            ak.Rotation = 0f;
-            ak.Scale = new Vector2(1, 1);
-
-            List<Transformation> a = new List<Transformation>();
-            a.Add(ak);
-            a.Add(ak);
-            a.Add(ak);
-            transList.Add(a);
-
-
-            Transformation bk = new Transformation();
-            bk.Position = new Vector2(0, 0);
-            bk.Rotation = MathHelper.PiOver4 / 3;
-            bk.Scale = new Vector2(1, 1);
-            
-
-            Transformation bk2 = new Transformation();
-            bk2.Position = new Vector2(0, 0);
-            bk2.Rotation = MathHelper.PiOver4;
-            bk2.Scale = new Vector2(1, 1);
-
-            List<Transformation> b = new List<Transformation>();
-            b.Add(bk);
-            b.Add(bk2);
-            b.Add(bk2);
-            transList.Add(b);
-            
-
-            Transformation ck = new Transformation();
-            ck.Position = new Vector2(0, 0);
-            ck.Rotation = MathHelper.PiOver2 / 2;
-            ck.Scale = new Vector2(1, 1);
-            
-
-            Transformation ck2 = new Transformation();
-            ck2.Position = new Vector2(0, 0);
-            ck2.Rotation = MathHelper.PiOver2;
-            ck2.Scale = new Vector2(1, 1);
-
-            List<Transformation> c = new List<Transformation>();
-            c.Add(ck);
-            c.Add(ck2);
-            c.Add(ck2);
-            transList.Add(c);
-            
-        }
+  
         
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //skel.LoadContent(Content);
+            DebugFont = Content.Load<SpriteFont>("debugFont");
             LoadDebugs();
             sk = new Skeleton2(be);
             sk.TransformBone();
@@ -232,6 +189,7 @@ namespace SkeletalAnimationTest10
 
             joi = new SkelJoint(be);
             joi.LoadContent(Content);
+            xmlSettings = new XmlWriterSettings();
             //joi.TransBone();
             //joi.CopyTransform();
             // TODO: use this.Content to load your game content here
@@ -250,6 +208,17 @@ namespace SkeletalAnimationTest10
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
         /// </summary>
+        /// 
+        public void WriteSkeleton()
+        {
+            xmlSettings.Indent = true;
+
+            using (XmlWriter writer = XmlWriter.Create("testSkl.xml", xmlSettings))
+            {
+                IntermediateSerializer.Serialize(writer, joi, null);
+            }
+        }
+
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
@@ -300,6 +269,11 @@ namespace SkeletalAnimationTest10
             {
                 b = !b;
             }
+            if (c.IsKeyDown(Keys.S))
+            {
+                WriteSkeleton();
+            }
+
             if (motion!=Vector2.Zero)
             {
                 //motion *= 800;
@@ -438,6 +412,7 @@ namespace SkeletalAnimationTest10
             //Console.WriteLine(MousePosition);
             //bb.Translations(bb.root, be, GraphicsDevice);
             spriteBatch.Begin();
+            spriteBatch.DrawString(DebugFont, animationPlayer.FrameIndex.ToString(), Vector2.Zero, Color.White);
             //skel.Draw(spriteBatch);
             //sk.Draw(spriteBatch);
             joi.Draw(spriteBatch);

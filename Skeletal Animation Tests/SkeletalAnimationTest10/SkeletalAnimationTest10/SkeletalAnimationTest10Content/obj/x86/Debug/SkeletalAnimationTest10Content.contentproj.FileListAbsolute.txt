@@ -1,1 +1,2 @@
 C:\Users\Mark Shaw\Documents\Visual Studio 2010\Projects\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Mark Shaw\Documents\Visual Studio 2010\GitHub Projects\XNA\Skeletal Animation Tests\SkeletalAnimationTest10\SkeletalAnimationTest10\SkeletalAnimationTest10Content\obj\x86\Debug\ResolveAssemblyReference.cache

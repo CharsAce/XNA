@@ -9,9 +9,7 @@ namespace SkeletalAnimationTest10
     public struct Joint
     {        
         public Vector2 Offset;
-        public Vector2 TextureOrigin;
-        public float Length;
-        public float Scale;
+        public Vector2 TextureOrigin;                
         public string TextureName;
         public int ParentId;
         public BoneFlag Flag;

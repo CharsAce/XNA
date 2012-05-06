@@ -11,10 +11,20 @@ namespace SkeletalAnimationTest10
         SkeletonAnimation Animation;
         Transformation[] SetTrans;
         AnimationUpdater[] AnimationUpdates;
-
+        
         int boneIndex;
         int currentFrame;
         int frameIndex;
+
+        public int CurrentFrame
+        {
+            get { return currentFrame; }
+        }
+
+        public int FrameIndex
+        {
+            get { return frameIndex; }
+        }
 
         public AnimationPlayer(SkeletonAnimation animation)
         {
@@ -192,6 +202,12 @@ namespace SkeletalAnimationTest10
             for (int i = 0; i < length; i++)
             {
                 AnimationUpdates[i].Update(elapsed, ref setTrans[i]);
+
+                //if (AnimationUpdates[i].BoneAnimationGetter.Keyframes.Count>=frameIndex)
+                //{
+                //    frameIndex = AnimationUpdates[i].FrameIndex;
+                //}
+                frameIndex = AnimationUpdates[i].FrameIndex;
             }
         }
     }

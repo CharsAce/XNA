@@ -2,101 +2,118 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
 
 namespace SkeletalAnimationTest10
 {    
-    class SkelJoint
+    public class SkelJoint
     {
+        [ContentSerializerIgnore]
         Vector2 skeletonPosition;
-        Joint[] joints = new Joint[3];
+
+        public List<Joint> joints;
+        [ContentSerializerIgnore]
         BasicEffect be;
-        DebugLine[] l = new DebugLine[3];
-        Texture2D[] textures = new Texture2D[3];
+        [ContentSerializerIgnore]
+        List<DebugLine> l;
+        [ContentSerializerIgnore]
+        List<Texture2D> textures;
+
+        [ContentSerializerIgnore]
         Vector2[] positions = new Vector2[3];
+        [ContentSerializerIgnore]
         float[] rotations = new float[3];
 
-        Transformation[] AbsoluteTransforms = new Transformation[3];
-        Transformation[] RelativeTransforms = new Transformation[3];
+        [ContentSerializerIgnore]
+        List<Transformation> AbsoluteTransforms;
+        [ContentSerializerIgnore]
+        List<Transformation> RelativeTransforms;
+        [ContentSerializerIgnore]
+        List<Transformation> AbsoluteTransformsCopy;
+        
+        [ContentSerializerIgnore]
+        XmlWriterSettings xmlWrite;
 
-        Transformation[] AbsoluteTransformsCopy = new Transformation[3];
-
+        [ContentSerializerIgnore]
         bool drawed = true;
 
+        [ContentSerializerIgnore]
         bool flipped = true;
 
+        [ContentSerializerIgnore]
         public bool Flipped
         {
             get { return flipped; }
         }
 
+        public SkelJoint(BasicEffect be, int jointAmount)
+        {
+           
+        }
+
         public SkelJoint(BasicEffect be)
         {
-            //for (int i = 0; i < joints.Length; i++)
-            //{
-            //    joints[i] = new Joint();                
-            //}
+            joints = new List<Joint>();
+            l = new List<DebugLine>();
 
-            joints[0].Offset = new Vector2(0, 0);
-            joints[0].ParentId = -1;
-            joints[0].Flag = BoneFlag.BoneAbsolute;
-            joints[0].TextureName = "0";
-            joints[0].TextureOrigin = new Vector2(24, 24);
-            //joints[0].Scale = 1f;
-            //joints[0].Length = 0;
+            Joint A;
+            A.Offset = new Vector2(0, 0);
+            A.ParentId = -1;
+            A.Flag = BoneFlag.BoneAbsolute;
+            A.TextureName = "0";
+            A.TextureOrigin = new Vector2(24, 24);
+            joints.Add(A);
+            
+            Joint B;
+            B.Offset = new Vector2(0, 30);
+            B.ParentId = 0;
+            B.Flag = BoneFlag.Child;
+            B.TextureName = "1";
+            B.TextureOrigin = new Vector2(12, 24);
+            joints.Add(B);
 
-            joints[1].Offset = new Vector2(0, 30);
-            joints[1].ParentId = 0;
-            joints[1].Flag = BoneFlag.Child;
-            joints[1].TextureName = "1";
-            joints[1].TextureOrigin = new Vector2(12, 24);
-            //joints[1].Scale = 1f;
-            //joints[1].Length = 36;
-
-            joints[2].Offset = new Vector2(84, 0);
-            joints[2].ParentId = 1;
-            joints[2].Flag = BoneFlag.Child;
-            joints[2].TextureName = "1";
-            joints[2].TextureOrigin = new Vector2(12, 24);
-            //joints[2].Scale = 1f;
-            //joints[2].Length = 36;
-
-            rotations[0] = MathHelper.PiOver4;
-            //rotations[1]=MathHelper.PiOver2;
-            rotations[1] = 0;
+            Joint C;
+            C.Offset = new Vector2(84, 0);
+            C.ParentId = 1;
+            C.Flag = BoneFlag.Child;
+            C.TextureName = "1";
+            C.TextureOrigin = new Vector2(12, 24);
+            joints.Add(C);
 
             this.be = be;
 
+            AbsoluteTransforms = new List<Transformation>();
+            AbsoluteTransformsCopy = new List<Transformation>();
+            //RelativeTransforms = new List<Transformation>();
+            //AbsoluteTransforms[0].Position = new Vector2(300, 300);
+            //AbsoluteTransforms[0].Rotation = 0;
+            //AbsoluteTransforms[0].Scale = new Vector2(1, 1);
 
-            //RelativeTransforms[0].Position = new Vector2(0,0);
-            //RelativeTransforms[0].Rotation = 0f;// MathHelper.PiOver4;
-            //RelativeTransforms[0].Scale = 1f;
-            //RelativeTransforms[1].Position = new Vector2(0,0);
-            //RelativeTransforms[1].Rotation = MathHelper.PiOver4/3f;
-            //RelativeTransforms[1].Scale = 1f;
-            //RelativeTransforms[2].Position = new Vector2(0, 0);
-            //RelativeTransforms[2].Rotation = MathHelper.PiOver2;
-            //RelativeTransforms[2].Scale = 1f;
+            //AbsoluteTransforms.Add(Transformation.Default);
 
-            AbsoluteTransforms[0].Position = new Vector2(300, 300);
-            AbsoluteTransforms[0].Rotation = 0;
-            AbsoluteTransforms[0].Scale = new Vector2(1, 1);
+            for (int i = 0; i < joints.Count; i++)
+            {
+                AbsoluteTransforms.Add(Transformation.Default);
+            }
         }
 
         public void LoadContent(ContentManager content)
         {
-            for (int i = 0; i < joints.Length; i++)
+            textures = new List<Texture2D>();
+            for (int i = 0; i < joints.Count; i++)
             {
-
-                textures[i] = content.Load<Texture2D>(joints[i].TextureName);
+                textures.Add(content.Load<Texture2D>(joints[i].TextureName));
+                //textures[i] = content.Load<Texture2D>(joints[i].TextureName);
             }
         }
 
         public void TransBone()
         {
-            for (int i = 0; i < joints.Length; i++)
+            for (int i = 0; i < joints.Count; i++)
             {
                 if (joints[i].Flag == BoneFlag.Child)
                 {
@@ -132,7 +149,19 @@ namespace SkeletalAnimationTest10
 
         public void SetLocalTransform(Transformation[] t)
         {
-            Array.Copy(t, RelativeTransforms, t.Length);
+            if (RelativeTransforms == null)
+            {                
+                RelativeTransforms = new List<Transformation>();
+            }
+            //Array.Copy(t, RelativeTransforms, t.Length);
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (RelativeTransforms.Count<t.Length)
+                    RelativeTransforms.Add(t[i]);
+                else
+                    RelativeTransforms[i] = t[i];
+            }
         }
 
         public void MoveSkeleton(Vector2 movement)
@@ -151,22 +180,12 @@ namespace SkeletalAnimationTest10
         }
         public void CopyTransform()
         {
-            //if (drawed)
-            {
-                Array.Copy(AbsoluteTransforms, AbsoluteTransformsCopy, AbsoluteTransforms.Length);
-                //AbsoluteTransformsCopy = AbsoluteTransforms;
-
-                //for (int i = 0; i < AbsoluteTransforms.Length; i++)
-                //{
-                //    AbsoluteTransformsCopy[i] = Transformation.Copy(AbsoluteTransforms[i]);
-                //}
-                Transformation temp;
-                temp = Transformation.Default;
-                ////temp.Position = AbsoluteTransformsCopy[0].Position;
-                ////temp.Rotation = 0f;
-                AbsoluteTransforms[0] = Transformation.Copy(temp);
+            AbsoluteTransformsCopy = AbsoluteTransforms;
+            Transformation temp;
+            temp = Transformation.Default;
+            AbsoluteTransforms[0] = Transformation.Copy(temp);
                 drawed = false;
-            }
+            
         }
 
         public void DrawDebug(GraphicsDevice gd)
@@ -179,7 +198,7 @@ namespace SkeletalAnimationTest10
 
         public void Draw(SpriteBatch sb)
         {
-            for (int i = 0; i < joints.Length; i++)
+            for (int i = 0; i < joints.Count; i++)
             {
                 Vector2 pos = AbsoluteTransformsCopy[i].Position + skeletonPosition;
                 Vector2 origin = joints[i].TextureOrigin;

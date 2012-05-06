@@ -29,12 +29,8 @@ namespace SkeletalAnimationTest10
         public static Transformation Compose(Transformation trans1, Transformation trans2)
         {
             Transformation result;
-            //Vector2 tempPos = Vector2.Transform(trans2.Position, Matrix.CreateRotationZ(trans1.Rotation));
-            //tempPos = Vector2.Add(tempPos, trans1.Position);
             Vector2 tempPos = trans1.RotatePosition(trans2.Position);
-            //tempPos = Vector2.Add(tempPos, trans1.Position);
-            //result.Position = Vector2.Transform(trans2.Position, Matrix.CreateRotationZ(trans1.Rotation));
-            //result.Position += trans1.Position;
+
             result.Position = tempPos;
             result.Rotation = trans1.Rotation + trans2.Rotation;
             result.Scale = trans1.Scale * trans2.Scale;
@@ -69,7 +65,7 @@ namespace SkeletalAnimationTest10
             Transformation result;
 
             //result.Position = Vector2.Lerp(trans1.Position, trans2.Position, 0.5f);
-            //result.Scale = MathHelper.Lerp(trans1.Scale, trans2.Scale, 0.5f);
+            //result.Scale = Vector2.Lerp(trans1.Scale, trans2.Scale, 0.5f);
             //result.Rotation = MathHelper.Lerp(trans1.Rotation, trans2.Rotation, 0.5f);
 
             result.Position = Vector2.Lerp(trans1.Position, trans2.Position, amount);

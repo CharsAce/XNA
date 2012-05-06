@@ -79,6 +79,11 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="debugFont.spritefont">
+      <Name>debugFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="machine_skeleton.xml">
       <Name>machine_skeleton</Name>
       <Importer>XmlImporter</Importer>

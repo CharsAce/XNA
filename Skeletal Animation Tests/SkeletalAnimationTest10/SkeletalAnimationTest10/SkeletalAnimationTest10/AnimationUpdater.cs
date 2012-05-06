@@ -12,6 +12,21 @@ namespace SkeletalAnimationTest10
         int currentFrame;
         BoneAnimation BoneAnimation;
 
+        public BoneAnimation BoneAnimationGetter
+        {
+            get { return BoneAnimation; }
+        }
+
+        public int CurrentFrame
+        {
+            get { return currentFrame; }
+        }
+
+        public int FrameIndex
+        {
+            get { return frameIndex; }
+        }
+
         public AnimationUpdater(BoneAnimation data)
         {
             BoneAnimation = data;

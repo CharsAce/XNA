@@ -4,7 +4,8 @@ Content\machine_forearm.xnb
 Content\machine_hookBase.xnb
 Content\machine_hookLeft.xnb
 Content\machine_hookRight.xnb
-Content\gameFont.xnb
 Content\machine_forearm2.xnb
 Content\1.xnb
 Content\0.xnb
+Content\gameFont.xnb
+Content\debugFont.xnb
